@@ -1,0 +1,15 @@
+D:\prog\GameCS\ProjectGameCS\bin\Debug\net7.0\ProjectGameCS.exe
+D:\prog\GameCS\ProjectGameCS\bin\Debug\net7.0\ProjectGameCS.deps.json
+D:\prog\GameCS\ProjectGameCS\bin\Debug\net7.0\ProjectGameCS.runtimeconfig.json
+D:\prog\GameCS\ProjectGameCS\bin\Debug\net7.0\ProjectGameCS.dll
+D:\prog\GameCS\ProjectGameCS\bin\Debug\net7.0\ProjectGameCS.pdb
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.csproj.AssemblyReference.cache
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.GeneratedMSBuildEditorConfig.editorconfig
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.AssemblyInfoInputs.cache
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.AssemblyInfo.cs
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.csproj.CoreCompileInputs.cache
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.dll
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\refint\ProjectGameCS.dll
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.pdb
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ProjectGameCS.genruntimeconfig.cache
+D:\prog\GameCS\ProjectGameCS\obj\Debug\net7.0\ref\ProjectGameCS.dll

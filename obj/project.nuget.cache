@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bK62ZHQWK5oINvowhFAUn6oCeeEMnRErWyDupKGXMHdoh1Y9nrcWrR9ZcDtlwhPZlc36eH2i09JaDA+hlPpGGg==",
+  "dgSpecHash": "0eKPfgjKZVfU2M4jHR0Ok5BZY7amnnmeo4PjWwMqfNStk0EvQ3PghaFBHvR6OND8voDqWjfDg19HoLBb2BdMUg==",
   "success": true,
-  "projectFilePath": "D:\\prog\\GameCS\\ProjectGameCS\\ProjectGameCS.csproj",
+  "projectFilePath": "D:\\prog\\HanoiTower\\ProjectGameCS.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

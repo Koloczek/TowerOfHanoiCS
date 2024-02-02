@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\prog\\GameCS\\ProjectGameCS\\ProjectGameCS.csproj": {}
+    "D:\\prog\\HanoiTower\\ProjectGameCS.csproj": {}
   },
   "projects": {
-    "D:\\prog\\GameCS\\ProjectGameCS\\ProjectGameCS.csproj": {
+    "D:\\prog\\HanoiTower\\ProjectGameCS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prog\\GameCS\\ProjectGameCS\\ProjectGameCS.csproj",
+        "projectUniqueName": "D:\\prog\\HanoiTower\\ProjectGameCS.csproj",
         "projectName": "ProjectGameCS",
-        "projectPath": "D:\\prog\\GameCS\\ProjectGameCS\\ProjectGameCS.csproj",
+        "projectPath": "D:\\prog\\HanoiTower\\ProjectGameCS.csproj",
         "packagesPath": "C:\\Users\\kaspe\\.nuget\\packages\\",
-        "outputPath": "D:\\prog\\GameCS\\ProjectGameCS\\obj\\",
+        "outputPath": "D:\\prog\\HanoiTower\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual studio\\Shared\\NuGetPackages"

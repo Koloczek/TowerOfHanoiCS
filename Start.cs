@@ -158,23 +158,23 @@ namespace ProjectGameCS
             int baseWidth = numberOfDisks * 2 + 1;
             int towerSpacing = 3;
 
-            for (int level = maxHeight - 1; level >= 0; level--) // Zaczynamy od dołu
+            for (int level = maxHeight - 1; level >= 0; level--)
             {
                 for (int towerIndex = 0; towerIndex < towers.Length; towerIndex++)
                 {
                     if (towerIndex == selectedTower)
                     {
-                        Console.BackgroundColor = ConsoleColor.DarkGray; // Ustaw tło dla wybranej wieży
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
                     }
 
-                    var towerList = towers[towerIndex].ToList(); // Brak odwracania listy
-                    int diskSize = maxHeight - level - 1 < towerList.Count ? towerList[maxHeight - level - 1] : 0; // Dostosuj indeksowanie
+                    var towerList = towers[towerIndex].ToList(); 
+                    int diskSize = maxHeight - level - 1 < towerList.Count ? towerList[maxHeight - level - 1] : 0; 
 
                     PrintDisk(diskSize, baseWidth);
 
                     if (towerIndex == selectedTower)
                     {
-                        Console.ResetColor(); // Zresetuj kolor tła
+                        Console.ResetColor(); 
                     }
 
                     if (towerIndex < towers.Length - 1)
@@ -192,7 +192,7 @@ namespace ProjectGameCS
             {
                 if (towerIndex == selectedTower)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGray; // Ustaw tło dla etykiety wybranej wieży
+                    Console.BackgroundColor = ConsoleColor.DarkGray; 
                 }
 
                 string label = "[T" + (towerIndex + 1) + "]";
@@ -201,7 +201,7 @@ namespace ProjectGameCS
 
                 if (towerIndex == selectedTower)
                 {
-                    Console.ResetColor(); // Zresetuj kolor tła
+                    Console.ResetColor(); 
                 }
 
                 if (towerIndex < towers.Length - 1)
@@ -227,9 +227,10 @@ namespace ProjectGameCS
 
         static void ResetGame()
         {
+            towers = new Stack<int>[3];
             for (int i = 0; i < towers.Length; i++)
             {
-                towers[i].Clear();
+                towers[i].new Stack<int>();
             }
             for (int i = numberOfDisks; i > 0; i--)
             {
@@ -237,7 +238,21 @@ namespace ProjectGameCS
             }
 
             moves = 0; 
-            selectedTower = 0; 
+        }
+
+        static void ChooseNumberOfDisks()
+        {
+            Console.WriteLine("Wybierz liczbę dysków (3-8):");
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out int disks) && disks >= 3 && disks <= 8)
+            {
+                numberOfDisks = disks;
+            }
+            else
+            {
+                Console.WriteLine("Nieprawidłowa wartość, domyślna wartość to: 3");
+                numberOfDisks = 3;
+            }
         }
 
     }

@@ -70,6 +70,9 @@ namespace ProjectGameCS
 
             static void Rules()
             {
+                Console.WriteLine("Gra używa 3 klawiszy. Strzałek lewo / prawo do poruszania sie");
+                Console.WriteLine("oraz spacji do zatwierdzania");
+                Console.WriteLine();
                 Console.WriteLine("1. W każdym ruchu możesz przenieść tylko jeden dysk.");
                 Console.WriteLine("Dysk ten musi być górny na jednym ze słupków.");
                 Console.WriteLine("2. Dysk można położyć tylko na większym dysku lub na pustym słupku.");

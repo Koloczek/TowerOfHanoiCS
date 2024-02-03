@@ -1,3 +1,5 @@
+# <img src="logo.png" alt="Balancer" height="128px">
+
 # Tower of Hanoi in CS
  Gra "Wieża Hanoi" to klasyczna łamigłówka logiczna, która polega na przenoszeniu stosu różnej wielkości krążków z pierwszego słupka na ostatni.
 
@@ -23,10 +25,10 @@ static int moves = 0;
 static int numberOfDisks = 3;
 static int selectedTower = 0;
 ```
-***towers:*** Tablica trzech stosów reprezentująca wieże, na których umieszczane są dyski.\
-***moves:*** Licznik wykonanych ruchów.\
-***numberOfDisks:*** Początkowa liczba dysków w grze.\
-***selectedTower:*** Indeks aktualnie wybranej wieży.\
+$\color{lightblue}{\textsf{towers: }}$ Tablica trzech stosów reprezentująca wieże, na których umieszczane są dyski.\
+$\color{lightblue}{\textsf{moves: }}$ Licznik wykonanych ruchów.\
+$\color{lightblue}{\textsf{numberOfDisks: }}$ Początkowa liczba dysków w grze.\
+$\color{lightblue}{\textsf{s.electTower: }}$ Indeks aktualnie wybranej wieży.
 
 
 ## Metoda Main
@@ -92,9 +94,10 @@ $\color{lightblue}{\textsf{Pętla główna: }}$ Metoda wchodzi w pętlę while, 
 $\color{lightblue}{\textsf{Wyśwetlanie menu: }}$ W każdym obrocie pętli menu gry jest czyszczone i wyświetlane na nowo, oferując użytkownikowi trzy opcje: Graj, Zasady, Wyjdź.\
 $\color{lightblue}{\textsf{Odczyt i obsługa wyboru: }}$ Program odczytuje wybór użytkownika jako ciąg znaków, który następnie próbuje przekonwertować na liczbę całkowitą. W zależności od wyniku konwersji, program wykonuje jedną z akcji: rozpoczęcie gry, wyświetlenie zasad, lub zakończenie działania programu.\
 $\color{lightblue}{\textsf{Zarządzanie akcjami: }}$ W przypadku wyboru rozpoczęcia gry, użytkownik jest proszony o wybór liczby dysków, po czym gra jest resetowana i rozpoczyna się główna pętla gry. Wybór zasad powoduje wyświetlenie instrukcji gry. Opcja wyjścia kończy działanie programu.\
-$\color{lightblue}{\textsf{Komunikat o lontynuacji: }}$ Po każdej akcji, o ile gra nie została zakończona, użytkownik jest informowany\
+$\color{lightblue}{\textsf{Komunikat o lontynuacji: }}$ Po każdej akcji, o ile gra nie została zakończona, użytkownik jest informowany.
 
 ## Metoda Rules
+Wyświetla zasady gry w Wieże Hanoi.
 
 ```csharp
 static void Rules()
@@ -110,7 +113,6 @@ static void Rules()
                 Console.WriteLine();
             }
 ```
-Wyświetla zasady gry w Wieże Hanoi.
 
 ## Metoda Game
 
@@ -176,7 +178,7 @@ $\color{lightblue}{\textsf{Wybór wieży: }}$ Użytkownik wybiera wieżę, korzy
 $\color{lightblue}{\textsf{Przenoszenie dysków: }}$ Za pomocą klawisza spacji użytkownik może wybrać dysk do przeniesienia (ustawiając sourceTower) i przenieść go do innej wieży. Operacja przeniesienia jest obsługiwana przez metodę MoveDisk, która sprawdza, czy przeniesienie jest możliwe, zgodnie z zasadami gry.\
 $\color{lightblue}{\textsf{Komunikat błedu: }}$ Jeśli próba przeniesienia dysku jest niepoprawna (np. przeniesienie większego dysku na mniejszy), wyświetlany jest komunikat o błędzie i użytkownik ma możliwość ponownego podjęcia akcji.\
 $\color{lightblue}{\textsf{Sprawdzenie warunków zwycięstwa: }}$ Po każdym udanym przeniesieniu dysku, metoda CheckWin sprawdza, czy wszystkie dyski zostały przeniesione na ostatnią wieżę w odpowiedniej kolejności. Jeśli tak, gra kończy się zwycięstwem.\
-$\color{lightblue}{\textsf{Zakończenie gry: }}$ Gdy użytkownik ułoży wszystkie dyski na ostatniej wieży, wyświetlany jest komunikat gratulacyjny z informacją o liczbie wykonanych ruchów, a gra się kończy, wracając do głównego menu.\
+$\color{lightblue}{\textsf{Zakończenie gry: }}$ Gdy użytkownik ułoży wszystkie dyski na ostatniej wieży, wyświetlany jest komunikat gratulacyjny z informacją o liczbie wykonanych ruchów, a gra się kończy, wracając do głównego menu.
 
 ## Metoda WriteLineInColor
 
@@ -277,7 +279,7 @@ $\color{lightblue}{\textsf{Czyszczenie ekranu i wyświetlanie ruchów: }}$ Na po
 $\color{lightblue}{\textsf{Iteracja przez poziomy wież: }}$ Metoda iteruje od góry do dołu przez każdy poziom wież. Dla każdego poziomu iteruje przez wszystkie trzy wieże, wyświetlając dyski lub puste przestrzenie.\
 $\color{lightblue}{\textsf{Zaznaczenie wybranej wieży: }}$ Jeśli wieża jest aktualnie wybrana przez gracza (wskazana przez selectedTower), jej tło zostaje zmienione na ciemnoszare, aby to zaznaczyć.\
 $\color{lightblue}{\textsf{Wyświetlanie dysków: }}$ Dla każdej wieży na danym poziomie, metoda PrintDisk jest używana do wyświetlenia dysku (lub pustego miejsca, jeśli nie ma dysku na danym poziomie). Rozmiar dysku i jego pozycja są obliczane, aby zapewnić poprawną wizualizację.\
-$\color{lightblue}{\textsf{Wyświetlanie linii bazowej i etykiet wież: }}$ Na dole wież metoda wyświetla linię bazową, aby oddzielić wieże od ich etykiet. Etykiety są wyświetlane pod każdą wieżą, wyśrodkowane względem szerokości wieży. Wybrane wieże są ponownie zaznaczone.\
+$\color{lightblue}{\textsf{Wyświetlanie linii bazowej i etykiet wież: }}$ Na dole wież metoda wyświetla linię bazową, aby oddzielić wieże od ich etykiet. Etykiety są wyświetlane pod każdą wieżą, wyśrodkowane względem szerokości wieży. Wybrane wieże są ponownie zaznaczone.
 
 ## Metoda PrintDisk
 
@@ -325,7 +327,7 @@ static void ResetGame()
 $\color{lightblue}{\textsf{Inicjalizacja wież: }}$ Tworzy trzy nowe, puste stosy reprezentujące wieże w grze. Ta czynność zapewnia, że wszystkie poprzednie dyski i stany wież zostaną usunięte, a wieże będą gotowe do nowej gry.\
 $\color{lightblue}{\textsf{Wypełnianie pierwszej wieży: }}$ Wkłada dyski na pierwszą wieżę (wieża numer 0 w tablicy towers). Dyski są układane od największego (na dole) do najmniejszego (na górze), co odpowiada ich początkowemu ułożeniu w klasycznej grze w Wieże Hanoi. Liczba dysków (numberOfDisks) może być ustalona przez gracza przed rozpoczęciem gry, co pozwala na dostosowanie poziomu trudności.\
 $\color{lightblue}{\textsf{Reset liczby ruchów: }}$ Zeruje licznik ruchów (moves), co jest istotne dla śledzenia postępów gracza w nowej grze.\
-$\color{lightblue}{\textsf{Wybór początkowej wieży: }}$ Ustawia zmienną selectedTower na pierwszą wieżę, co jest punktem wyjścia dla interakcji gracza z grą.\
+$\color{lightblue}{\textsf{Wybór początkowej wieży: }}$ Ustawia zmienną selectedTower na pierwszą wieżę, co jest punktem wyjścia dla interakcji gracza z grą.
 
 ## Metoda ChooseNumberOfDisks
 Pozwala użytkownikowi na wybranie liczby dysków przed rozpoczęciem gry, zapewniając możliwość dostosowania poziomu trudności.
@@ -352,4 +354,4 @@ $\color{lightblue}{\textsf{Pętla: }}$ Metoda używa pętli while, która dział
 $\color{lightblue}{\textsf{Prośba o wejście: }}$ Użytkownik jest proszony o podanie liczby dysków, z którymi chce grać. Program określa minimalną i maksymalną dozwoloną liczbę dysków (w tym przypadku od 3 do 8), co jest standardowym zakresem zapewniającym rozsądną grę pod względem trudności i długości.\
 $\color{lightblue}{\textsf{Walidacja wejścia: }}$ Używając int.TryParse, metoda próbuje przekonwertować wprowadzony ciąg znaków na liczbę całkowitą i jednocześnie sprawdza, czy liczba mieści się w dozwolonym zakresie. Jest to ważne dla zapewnienia, że gra zostanie zainicjowana z właściwą liczbą dysków.\
 $\color{lightblue}{\textsf{Informacja zwrotna dla użytkownika: }}$ Jeśli wejście jest nieprawidłowe, użytkownik jest informowany o błędzie i proszony o ponowne wprowadzenie danych. Zapewnia to jasną komunikację i pomaga uniknąć frustracji związanej z niejasnymi wymaganiami dotyczącymi wejścia.\
-$\color{lightblue}{\textsf{Aktualizacja stanu gry: }}$ Po wprowadzeniu prawidłowej liczby dysków, wartość ta jest zapisywana w zmiennej numberOfDisks, co bezpośrednio wpływa na konfigurację gry przy następnym jej uruchomieniu.\
+$\color{lightblue}{\textsf{Aktualizacja stanu gry: }}$ Po wprowadzeniu prawidłowej liczby dysków, wartość ta jest zapisywana w zmiennej numberOfDisks, co bezpośrednio wpływa na konfigurację gry przy następnym jej uruchomieniu.

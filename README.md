@@ -212,11 +212,11 @@ static bool MoveDisk(int from, int to)
                 return true;
             }
 ```
-MoveDisk to kluczowa metoda, która odpowiada za przenoszenie dysku z jednej wieży na inną. Sprawdza ona, czy ruch jest dozwolony zgodnie z zasadami gry (nie można położyć większego dysku na mniejszym) i wykonuje ruch, jeśli jest możliwy.
+MoveDisk to metoda, która odpowiada za przenoszenie dysku z jednej wieży na inną. Sprawdza ona, czy ruch jest dozwolony zgodnie z zasadami gry (nie można położyć większego dysku na mniejszym) i wykonuje ruch, jeśli jest możliwy.
 
 ## Metoda PrintTowers
 
-Metoda PrintTowers pełni kluczową rolę w wizualizacji stanu gry w Wieżach Hanoi. Jej zadaniem jest wyświetlenie trzech wież i umieszczonych na nich dysków.
+Metoda PrintTowers pełni rolę w wizualizacji stanu gry w Wieżach Hanoi. Jej zadaniem jest wyświetlenie trzech wież i umieszczonych na nich dysków.
 
 ```csharp
 static void PrintTowers()

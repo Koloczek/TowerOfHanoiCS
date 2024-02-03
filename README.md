@@ -178,6 +178,178 @@ $\color{lightblue}{\textsf{Komunikat błedu: }}$ Jeśli próba przeniesienia dys
 $\color{lightblue}{\textsf{Sprawdzenie warunków zwycięstwa: }}$ Po każdym udanym przeniesieniu dysku, metoda CheckWin sprawdza, czy wszystkie dyski zostały przeniesione na ostatnią wieżę w odpowiedniej kolejności. Jeśli tak, gra kończy się zwycięstwem.\
 $\color{lightblue}{\textsf{Zakończenie gry: }}$ Gdy użytkownik ułoży wszystkie dyski na ostatniej wieży, wyświetlany jest komunikat gratulacyjny z informacją o liczbie wykonanych ruchów, a gra się kończy, wracając do głównego menu.\
 
+## Metoda WriteLineInColor
 
+```csharp
+static void WriteLineInColor(string message, ConsoleColor color)
+{
+    Console.ForegroundColor = color; // Ustawienie koloru tekstu
+    Console.WriteLine(message);      // Wyświetlenie komunikatu
+    Console.ResetColor();            // Resetowanie koloru do domyślnego
+}
+```
+Metoda ta pozwala na wyświetlenie komunikatów w konsoli w wybranym kolorze. Jest to szczególnie przydatne do zwrócenia uwagi użytkownika na ważne informacje.
 
+## Metoda MoveDisk
 
+```csharp
+static bool MoveDisk(int from, int to)
+            {
+                if (towers[from].Count == 0 || (towers[to].Count > 0 && towers[from].Peek() > towers[to].Peek()))
+                {
+                    return false;
+                }
+
+                towers[to].Push(towers[from].Pop());
+                return true;
+            }
+```
+MoveDisk to kluczowa metoda, która odpowiada za przenoszenie dysku z jednej wieży na inną. Sprawdza ona, czy ruch jest dozwolony zgodnie z zasadami gry (nie można położyć większego dysku na mniejszym) i wykonuje ruch, jeśli jest możliwy.
+
+## Metoda PrintTowers
+
+Metoda PrintTowers pełni kluczową rolę w wizualizacji stanu gry w Wieżach Hanoi. Jej zadaniem jest wyświetlenie trzech wież i umieszczonych na nich dysków.
+
+```csharp
+static void PrintTowers()
+            {
+                Console.Clear();
+                Console.WriteLine("Ruchy: " + moves);
+
+                int maxHeight = towers.Max(t => t.Count);
+                int baseWidth = numberOfDisks * 2 + 1;
+                int towerSpacing = 3;
+
+                for (int level = maxHeight - 1; level >= 0; level--)
+                {
+                    for (int towerIndex = 0; towerIndex < towers.Length; towerIndex++)
+                    {
+                        if (towerIndex == selectedTower)
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                        }
+
+                        var towerList = towers[towerIndex].ToList();
+                        int diskSize = maxHeight - level - 1 < towerList.Count ? towerList[maxHeight - level - 1] : 0;
+
+                        PrintDisk(diskSize, baseWidth);
+
+                        if (towerIndex == selectedTower)
+                        {
+                            Console.ResetColor();
+                        }
+
+                        if (towerIndex < towers.Length - 1)
+                        {
+                            Console.Write(new string(' ', towerSpacing));
+                        }
+                    }
+                    Console.WriteLine();
+                }
+                string baseLine = new string('-', towers.Length * (baseWidth + towerSpacing) - towerSpacing);
+                Console.WriteLine(baseLine);
+
+                for (int towerIndex = 0; towerIndex < towers.Length; towerIndex++)
+                {
+                    if (towerIndex == selectedTower)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                    }
+
+                    string label = "[T" + (towerIndex + 1) + "]";
+                    int labelPadding = (baseWidth - label.Length) / 2;
+                    Console.Write(new string(' ', labelPadding) + label + new string(' ', labelPadding));
+
+                    if (towerIndex == selectedTower)
+                    {
+                        Console.ResetColor();
+                    }
+
+                    if (towerIndex < towers.Length - 1)
+                    {
+                        Console.Write(new string(' ', towerSpacing));
+                    }
+                }
+                Console.WriteLine();
+            }
+```
+$\color{lightblue}{\textsf{Czyszczenie ekranu i wyświetlanie ruchów: }}$ Na początku metoda czyści ekran, aby zapewnić aktualny widok wież i wyświetla liczbę ruchów wykonanych przez gracza.\
+$\color{lightblue}{\textsf{Iteracja przez poziomy wież: }}$ Metoda iteruje od góry do dołu przez każdy poziom wież. Dla każdego poziomu iteruje przez wszystkie trzy wieże, wyświetlając dyski lub puste przestrzenie.\
+$\color{lightblue}{\textsf{Zaznaczenie wybranej wieży: }}$ Jeśli wieża jest aktualnie wybrana przez gracza (wskazana przez selectedTower), jej tło zostaje zmienione na ciemnoszare, aby to zaznaczyć.\
+$\color{lightblue}{\textsf{Wyświetlanie dysków: }}$ Dla każdej wieży na danym poziomie, metoda PrintDisk jest używana do wyświetlenia dysku (lub pustego miejsca, jeśli nie ma dysku na danym poziomie). Rozmiar dysku i jego pozycja są obliczane, aby zapewnić poprawną wizualizację.\
+$\color{lightblue}{\textsf{Wyświetlanie linii bazowej i etykiet wież: }}$ Na dole wież metoda wyświetla linię bazową, aby oddzielić wieże od ich etykiet. Etykiety są wyświetlane pod każdą wieżą, wyśrodkowane względem szerokości wieży. Wybrane wieże są ponownie zaznaczone.\
+
+## Metoda PrintDisk
+
+PrintDisk wspiera PrintTowers przez wyświetlenie indywidualnego dysku o określonym rozmiarze, centrując go względem szerokości podstawy wieży.
+
+```csharp
+static void PrintDisk(int diskSize, int baseWidth)
+            {
+                int padding = (baseWidth - diskSize * 2) / 2;
+                string disk = new string('=', diskSize * 2);
+                Console.Write(new string(' ', padding) + disk + new string(' ', padding));
+            }
+```
+
+## Metoda CheckWin
+
+```csharp
+static bool CheckWin()
+            {
+                return towers[0].Count == 0 && towers[1].Count == 0 && towers[2].Count == numberOfDisks;
+            }
+```
+**CheckWin** sprawdza, czy wszystkie dyski zostały przeniesione na ostatnią wieżę, co oznacza wygraną.
+
+## Metoda ResetGame
+przygotowuje grę do nowego rozpoczęcia, resetując wieże, dyski i licznik ruchów
+
+```csharp
+static void ResetGame()
+            {
+                towers = new Stack<int>[3];
+                for (int i = 0; i < towers.Length; i++)
+                {
+                    towers[i] = new Stack<int>();
+                }
+
+                for (int i = numberOfDisks; i > 0; i--)
+                {
+                    towers[0].Push(i);
+                }
+
+                moves = 0;
+            }
+```
+$\color{lightblue}{\textsf{Inicjalizacja wież: }}$ Tworzy trzy nowe, puste stosy reprezentujące wieże w grze. Ta czynność zapewnia, że wszystkie poprzednie dyski i stany wież zostaną usunięte, a wieże będą gotowe do nowej gry.\
+$\color{lightblue}{\textsf{Wypełnianie pierwszej wieży: }}$ Wkłada dyski na pierwszą wieżę (wieża numer 0 w tablicy towers). Dyski są układane od największego (na dole) do najmniejszego (na górze), co odpowiada ich początkowemu ułożeniu w klasycznej grze w Wieże Hanoi. Liczba dysków (numberOfDisks) może być ustalona przez gracza przed rozpoczęciem gry, co pozwala na dostosowanie poziomu trudności.\
+$\color{lightblue}{\textsf{Reset liczby ruchów: }}$ Zeruje licznik ruchów (moves), co jest istotne dla śledzenia postępów gracza w nowej grze.\
+$\color{lightblue}{\textsf{Wybór początkowej wieży: }}$ Ustawia zmienną selectedTower na pierwszą wieżę, co jest punktem wyjścia dla interakcji gracza z grą.\
+
+## Metoda ChooseNumberOfDisks
+Pozwala użytkownikowi na wybranie liczby dysków przed rozpoczęciem gry, zapewniając możliwość dostosowania poziomu trudności.
+
+```csharp
+static void ChooseNumberOfDisks()
+            {
+                while(true) { 
+                    Console.WriteLine("Wybierz liczbę dysków (3-8):");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out int disks) && disks >= 3 && disks <= 8)
+                    {
+                        numberOfDisks = disks;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nieprawidłowa wartość, domyślna wartość to: 3");
+                    }
+                }
+            }
+```
+$\color{lightblue}{\textsf{Pętla: }}$ Metoda używa pętli while, która działa do momentu, aż użytkownik wprowadzi prawidłową liczbę dysków. Dzięki temu użytkownik ma nieograniczone próby na wprowadzenie poprawnej wartości.\
+$\color{lightblue}{\textsf{Prośba o wejście: }}$ Użytkownik jest proszony o podanie liczby dysków, z którymi chce grać. Program określa minimalną i maksymalną dozwoloną liczbę dysków (w tym przypadku od 3 do 8), co jest standardowym zakresem zapewniającym rozsądną grę pod względem trudności i długości.\
+$\color{lightblue}{\textsf{Walidacja wejścia: }}$ Używając int.TryParse, metoda próbuje przekonwertować wprowadzony ciąg znaków na liczbę całkowitą i jednocześnie sprawdza, czy liczba mieści się w dozwolonym zakresie. Jest to ważne dla zapewnienia, że gra zostanie zainicjowana z właściwą liczbą dysków.\
+$\color{lightblue}{\textsf{Informacja zwrotna dla użytkownika: }}$ Jeśli wejście jest nieprawidłowe, użytkownik jest informowany o błędzie i proszony o ponowne wprowadzenie danych. Zapewnia to jasną komunikację i pomaga uniknąć frustracji związanej z niejasnymi wymaganiami dotyczącymi wejścia.\
+$\color{lightblue}{\textsf{Aktualizacja stanu gry: }}$ Po wprowadzeniu prawidłowej liczby dysków, wartość ta jest zapisywana w zmiennej numberOfDisks, co bezpośrednio wpływa na konfigurację gry przy następnym jej uruchomieniu.\

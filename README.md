@@ -3,25 +3,25 @@
 
 ## Zasady gry
 ```csharp
-      Console.WriteLine("1. W każdym ruchu możesz przenieść tylko jeden dysk.");
-      Console.WriteLine("Dysk ten musi być górny na jednym ze słupków.");
-      Console.WriteLine("2. Dysk można położyć tylko na większym dysku lub na pustym słupku.");
-      Console.WriteLine("Nigdy nie wolno kłaść większego dysku na mniejszym.");
-      Console.WriteLine("3. Celem gry jest przeniesienie wszystkich dysków ze słupka startowego");
-      Console.WriteLine("na słupek końcowy (ostatni).");
-      Console.WriteLine("Każdy słupek może służyć jako tymczasowy magazyn dla dysków, przy czym");
-      Console.WriteLine("zawsze należy przestrzegać wyżej wspomnianych zasad.");
-      Console.WriteLine();
+Console.WriteLine("1. W każdym ruchu możesz przenieść tylko jeden dysk.");
+Console.WriteLine("Dysk ten musi być górny na jednym ze słupków.");
+Console.WriteLine("2. Dysk można położyć tylko na większym dysku lub na pustym słupku.");
+Console.WriteLine("Nigdy nie wolno kłaść większego dysku na mniejszym.");
+Console.WriteLine("3. Celem gry jest przeniesienie wszystkich dysków ze słupka startowego");
+Console.WriteLine("na słupek końcowy (ostatni).");
+Console.WriteLine("Każdy słupek może służyć jako tymczasowy magazyn dla dysków, przy czym");
+Console.WriteLine("zawsze należy przestrzegać wyżej wspomnianych zasad.");
+Console.WriteLine();
 ```
 
 # The Code
 
 ## Definicje Początkowe
 ```csharp
-     static Stack<int>[] towers = new Stack<int>[3];
-     static int moves = 0;
-     static int numberOfDisks = 3;
-     static int selectedTower = 0;
+static Stack<int>[] towers = new Stack<int>[3];
+static int moves = 0;
+static int numberOfDisks = 3;
+static int selectedTower = 0;
 ```
 ***towers:*** Tablica trzech stosów reprezentująca wieże, na których umieszczane są dyski.\
 ***moves:*** Licznik wykonanych ruchów.\
@@ -171,8 +171,12 @@ static void Game()
                 Console.WriteLine("Gratulacje! Wygrałeś w {0} ruchach!", moves);
             }
 ```
-
-
+$\color{lightblue}{\textsf{Reset gry: }}$ Na początku metoda wywołuje funkcję ResetGame, aby przygotować wieże i licznik ruchów do nowej gry.\
+$\color{lightblue}{\textsf{Wybór wieży: }}$ Użytkownik wybiera wieżę, korzystając z klawiszy strzałek. Zmienna selectedTower jest aktualizowana, aby wskazać aktualnie wybraną wieżę.\
+$\color{lightblue}{\textsf{Przenoszenie dysków: }}$ Za pomocą klawisza spacji użytkownik może wybrać dysk do przeniesienia (ustawiając sourceTower) i przenieść go do innej wieży. Operacja przeniesienia jest obsługiwana przez metodę MoveDisk, która sprawdza, czy przeniesienie jest możliwe, zgodnie z zasadami gry.\
+$\color{lightblue}{\textsf{Komunikat błedu: }}$ Jeśli próba przeniesienia dysku jest niepoprawna (np. przeniesienie większego dysku na mniejszy), wyświetlany jest komunikat o błędzie i użytkownik ma możliwość ponownego podjęcia akcji.\
+$\color{lightblue}{\textsf{Sprawdzenie warunków zwycięstwa: }}$ Po każdym udanym przeniesieniu dysku, metoda CheckWin sprawdza, czy wszystkie dyski zostały przeniesione na ostatnią wieżę w odpowiedniej kolejności. Jeśli tak, gra kończy się zwycięstwem.\
+$\color{lightblue}{\textsf{Zakończenie gry: }}$ Gdy użytkownik ułoży wszystkie dyski na ostatniej wieży, wyświetlany jest komunikat gratulacyjny z informacją o liczbie wykonanych ruchów, a gra się kończy, wracając do głównego menu.\
 
 
 

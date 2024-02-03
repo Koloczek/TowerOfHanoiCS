@@ -1,3 +1,5 @@
+# <img src="logo.png" alt="Balancer" height="128px">
+
 # Tower of Hanoi in CS
  Gra "Wieża Hanoi" to klasyczna łamigłówka logiczna, która polega na przenoszeniu stosu różnej wielkości krążków z pierwszego słupka na ostatni.
 
